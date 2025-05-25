@@ -48,7 +48,7 @@ while True:
             (player_move == paper and computer_move == rock) or \
             (player_move == scissors and computer_move == paper):
         score_win += 1
-        print_in_blue("You win!")
+        print_in_green("You win!")
     elif player_move == computer_move:
         score_draw += 1
         print_in_grey("Draw!")
