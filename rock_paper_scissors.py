@@ -4,6 +4,20 @@ score_win = 0
 score_lose = 0
 score_draw = 0
 
+def valid_input_checker():
+    while True:
+        try:
+            player_input = input("Choose [r]ock, [p]aper or [s]cissors: ")
+            if player_input == "r":
+                return player_input
+            elif player_input == "p":
+                return player_input
+            elif player_input == "s":
+                return player_input
+        except ValueError:
+            pass
+        print("Invalid input. Try again...")
+
 def print_in_red(result):
     print(f"\033[91m {result}\033[00m")
 
@@ -21,7 +35,7 @@ while True:
     paper = "Paper"
     scissors = "Scissors"
 
-    player_move = input("Choose [r]ock, [p]aper or [s]cissors: ")
+    player_move = valid_input_checker()
 
     if player_move == "r":
         player_move = rock
