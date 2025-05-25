@@ -75,6 +75,6 @@ while True:
     play_again_response = input()
 
     if not play_again_response == "yes":
-        print(f"Thank you for playing, you scored:"
+        print(f"Thank you for playing, you scored: \n"
               f"Wins: {score_win} | Loses: {score_lose} | Draws: {score_draw}")
         break
