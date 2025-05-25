@@ -1,5 +1,9 @@
 import random
 
+score_win = 0
+score_lose = 0
+score_draw = 0
+
 def print_in_red(result):
     print(f"\033[91m {result}\033[00m")
 
@@ -43,15 +47,20 @@ while True:
     if (player_move == rock and computer_move == scissors) or \
             (player_move == paper and computer_move == rock) or \
             (player_move == scissors and computer_move == paper):
+        score_win += 1
         print_in_blue("You win!")
     elif player_move == computer_move:
+        score_draw += 1
         print_in_grey("Draw!")
     else:
         print_in_red("You lose!")
+        score_lose += 1
 
     print()
     print("Type [yes] to play again or [no] to quit: ")
     play_again_response = input()
 
     if not play_again_response == "yes":
+        print(f"Thank you for playing, you scored:"
+              f"Wins: {score_win} | Loses: {score_lose} | Draws: {score_draw}")
         break
