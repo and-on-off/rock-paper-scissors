@@ -30,6 +30,8 @@ def print_in_blue(result):
 def print_in_grey(result):
     print(f"\033[90m {result}\033[00m")
 
+
+print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
 while True:
     rock = "Rock"
     paper = "Paper"
