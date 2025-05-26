@@ -5,6 +5,7 @@ score_win = 0
 score_lose = 0
 score_draw = 0
 win_streak = 0
+max_win_streak = 0
 
 ROCK = "Rock"
 PAPER = "Paper"
@@ -39,7 +40,7 @@ def print_in_light_green(result):
 def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
     print(f"Thank you for playing, you scored: \n"
           f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
-    print_in_light_green(f"Your highest win streak was {win_streak}.")
+    print_in_light_green(f"Your highest win streak was {max_win_streak}.")
 
 def restart_the_game():
     while True:
@@ -70,8 +71,6 @@ def computer_choice():
 
     return choice
 
-
-
 print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
 
 while True:
@@ -94,6 +93,8 @@ while True:
             (player_move == SCISSORS and computer_move == PAPER):
         score_win += 1
         win_streak += 1
+        if win_streak >= max_win_streak:
+            max_win_streak = win_streak
         print_in_green("You win!")
     elif player_move == computer_move:
         score_draw += 1
