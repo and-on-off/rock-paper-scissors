@@ -28,7 +28,7 @@ def print_in_red(result):
     print(f"\033[91m{result}\033[00m")
 
 def print_in_green(result):
-    print(f"\033[92m {result}\033[00m")
+    print(f"\033[92m{result}\033[00m")
 
 def print_in_blue(result):
     print(f"\033[34m{result}\033[00m")
