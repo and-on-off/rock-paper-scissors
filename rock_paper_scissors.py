@@ -32,8 +32,6 @@ def restart_the_game():
         else:
             print("Invalid input. Please enter [yes] or [no]")
 
-
-
 def computer_choice():
     random_number = random.randint(1,3)
     choice = ""
@@ -59,8 +57,8 @@ def print_in_blue(result):
 def print_in_grey(result):
     print(f"\033[90m {result}\033[00m")
 
-
 print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
+
 while True:
 
     player_move = valid_input_checker()
@@ -72,8 +70,6 @@ while True:
         player_move = PAPER
     elif player_move == "s":
         player_move = SCISSORS
-    else:
-        raise SystemExit("Invalid Input. Try again...")
 
     print_in_blue(f"The computer chose {computer_move}.")
 
