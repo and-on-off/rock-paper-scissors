@@ -4,6 +4,10 @@ score_win = 0
 score_lose = 0
 score_draw = 0
 
+ROCK = "Rock"
+PAPER = "Paper"
+SCISSORS = "Scissors"
+
 def valid_input_checker():
     while True:
         try:
@@ -33,18 +37,15 @@ def print_in_grey(result):
 
 print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
 while True:
-    rock = "Rock"
-    paper = "Paper"
-    scissors = "Scissors"
 
     player_move = valid_input_checker()
 
     if player_move == "r":
-        player_move = rock
+        player_move = ROCK
     elif player_move == "p":
-        player_move = paper
+        player_move = PAPER
     elif player_move == "s":
-        player_move = scissors
+        player_move = SCISSORS
     else:
         raise SystemExit("Invalid Input. Try again...")
 
@@ -52,17 +53,17 @@ while True:
     computer_move = ""
 
     if computer_random_number == 1:
-        computer_move = rock
+        computer_move = ROCK
     elif computer_random_number == 2:
-        computer_move = paper
+        computer_move = PAPER
     elif computer_random_number == 3:
-        computer_move = scissors
+        computer_move = SCISSORS
 
     print_in_blue(f"The computer chose {computer_move}.")
 
-    if (player_move == rock and computer_move == scissors) or \
-            (player_move == paper and computer_move == rock) or \
-            (player_move == scissors and computer_move == paper):
+    if (player_move == ROCK and computer_move == SCISSORS) or \
+            (player_move == PAPER and computer_move == ROCK) or \
+            (player_move == SCISSORS and computer_move == PAPER):
         score_win += 1
         print_in_green("You win!")
     elif player_move == computer_move:
