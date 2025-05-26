@@ -21,10 +21,25 @@ def valid_input_checker():
             return player_input
         print("Invalid input. Try again...")
 
+def print_in_red(result):
+    print(f"\033[91m {result}\033[00m")
+
+def print_in_green(result):
+    print(f"\033[92m {result}\033[00m")
+
+def print_in_blue(result):
+    print(f"\033[34m {result}\033[00m")
+
+def print_in_grey(result):
+    print(f"\033[90m {result}\033[00m")
+
+def print_in_light_green(result):
+    print(f"\033[92m{result}\033[92m")
+
 def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
     print(f"Thank you for playing, you scored: \n"
-          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}% \n"
-          f"Your highest win streak was {win_streak}.")
+          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
+    print_in_light_green(f"Your highest win streak was {win_streak}.")
 
 def restart_the_game():
     while True:
@@ -55,17 +70,7 @@ def computer_choice():
 
     return choice
 
-def print_in_red(result):
-    print(f"\033[91m {result}\033[00m")
 
-def print_in_green(result):
-    print(f"\033[92m {result}\033[00m")
-
-def print_in_blue(result):
-    print(f"\033[34m {result}\033[00m")
-
-def print_in_grey(result):
-    print(f"\033[90m {result}\033[00m")
 
 print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
 
