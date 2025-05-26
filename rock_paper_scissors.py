@@ -4,6 +4,7 @@ games_played = 0
 score_win = 0
 score_lose = 0
 score_draw = 0
+win_streak = 0
 
 ROCK = "Rock"
 PAPER = "Paper"
@@ -22,7 +23,8 @@ def valid_input_checker():
 
 def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
     print(f"Thank you for playing, you scored: \n"
-          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
+          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}% \n"
+          f"Your highest win streak was {win_streak}.")
 
 def restart_the_game():
     while True:
@@ -86,13 +88,16 @@ while True:
             (player_move == PAPER and computer_move == ROCK) or \
             (player_move == SCISSORS and computer_move == PAPER):
         score_win += 1
+        win_streak += 1
         print_in_green("You win!")
     elif player_move == computer_move:
         score_draw += 1
+        win_streak = 0
         print_in_grey("Draw!")
     else:
         print_in_red("You lose!")
         score_lose += 1
+        win_streak = 0
 
     print()
     if not restart_the_game():
