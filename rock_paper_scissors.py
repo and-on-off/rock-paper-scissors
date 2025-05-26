@@ -27,12 +27,13 @@ def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
 def restart_the_game():
     while True:
         player_response = input("Type [yes] to play again or [no] to quit: ")
+        win_rate = score_win / games_played * 100
+        lose_rate = score_lose / games_played * 100
+        draw_rate = score_draw / games_played * 100
+
         if player_response == "yes":
             return True
         elif player_response == "no":
-            win_rate = score_win / games_played * 100
-            lose_rate = score_lose / games_played * 100
-            draw_rate = score_draw / games_played * 100
             print()
             display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
             return False
