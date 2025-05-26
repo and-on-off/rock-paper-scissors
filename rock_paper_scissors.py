@@ -78,9 +78,54 @@ print_in_blue("Welcome to Rock-Paper-Scissors game! \n"
 
 while True:
 
-    player_move = valid_input_checker()
+    try:
+        player_move = valid_input_checker()
 
-    if not player_move:
+        if not player_move:
+            if games_played > 0:
+                win_rate = score_win / games_played * 100
+                lose_rate = score_lose / games_played * 100
+                draw_rate = score_draw / games_played * 100
+            else:
+                win_rate = 0
+                lose_rate = 0
+                draw_rate = 0
+            display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+            break
+
+        computer_move = computer_choice()
+        games_played += 1
+
+        if player_move == "r":
+            player_move = ROCK
+        elif player_move == "p":
+            player_move = PAPER
+        elif player_move == "s":
+            player_move = SCISSORS
+
+        print_in_blue(f"The computer chose {computer_move}.")
+
+        if (player_move == ROCK and computer_move == SCISSORS) or \
+                (player_move == PAPER and computer_move == ROCK) or \
+                (player_move == SCISSORS and computer_move == PAPER):
+            score_win += 1
+            win_streak += 1
+            if win_streak >= max_win_streak:
+                max_win_streak = win_streak
+            print_in_green("You win!")
+        elif player_move == computer_move:
+            score_draw += 1
+            win_streak = 0
+            print_in_grey("Draw!")
+        else:
+            print_in_red("You lose!")
+            score_lose += 1
+            win_streak = 0
+
+        print()
+        if not restart_the_game():
+            break
+    except KeyboardInterrupt:
         if games_played > 0:
             win_rate = score_win / games_played * 100
             lose_rate = score_lose / games_played * 100
@@ -90,37 +135,3 @@ while True:
             lose_rate = 0
             draw_rate = 0
         display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
-        break
-
-    computer_move = computer_choice()
-    games_played += 1
-
-    if player_move == "r":
-        player_move = ROCK
-    elif player_move == "p":
-        player_move = PAPER
-    elif player_move == "s":
-        player_move = SCISSORS
-
-    print_in_blue(f"The computer chose {computer_move}.")
-
-    if (player_move == ROCK and computer_move == SCISSORS) or \
-            (player_move == PAPER and computer_move == ROCK) or \
-            (player_move == SCISSORS and computer_move == PAPER):
-        score_win += 1
-        win_streak += 1
-        if win_streak >= max_win_streak:
-            max_win_streak = win_streak
-        print_in_green("You win!")
-    elif player_move == computer_move:
-        score_draw += 1
-        win_streak = 0
-        print_in_grey("Draw!")
-    else:
-        print_in_red("You lose!")
-        score_lose += 1
-        win_streak = 0
-
-    print()
-    if not restart_the_game():
-        break
