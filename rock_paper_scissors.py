@@ -10,17 +10,29 @@ SCISSORS = "Scissors"
 
 def valid_input_checker():
     while True:
-        try:
-            player_input = input("Choose [r]ock, [p]aper or [s]cissors: ")
-            if player_input == "r":
-                return player_input
-            elif player_input == "p":
-                return player_input
-            elif player_input == "s":
-                return player_input
-        except ValueError:
-            pass
+        player_input = input("Choose [r]ock, [p]aper or [s]cissors: ")
+        if player_input == "r":
+            return player_input
+        elif player_input == "p":
+            return player_input
+        elif player_input == "s":
+            return player_input
         print("Invalid input. Try again...")
+
+def restart_the_game():
+    while True:
+        player_response = input("Type [yes] to play again or [no] to quit: ")
+        if player_response == "yes":
+            return True
+        elif player_response == "no":
+            print()
+            print(f"Thank you for playing, you scored: \n"
+                f"Wins: {score_win} | Loses: {score_lose} | Draws: {score_draw}")
+            return False
+        else:
+            print("Invalid input. Please enter [yes] or [no]")
+
+
 
 def computer_choice():
     random_number = random.randint(1,3)
@@ -78,10 +90,5 @@ while True:
         score_lose += 1
 
     print()
-    print("Type [yes] to play again or [no] to quit: ")
-    play_again_response = input()
-
-    if not play_again_response == "yes":
-        print(f"Thank you for playing, you scored: \n"
-              f"Wins: {score_win} | Loses: {score_lose} | Draws: {score_draw}")
+    if not restart_the_game():
         break
