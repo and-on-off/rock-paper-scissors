@@ -25,16 +25,16 @@ def valid_input_checker():
         print("Invalid input. Try again...")
 
 def print_in_red(result):
-    print(f"\033[91m {result}\033[00m")
+    print(f"\033[91m{result}\033[00m")
 
 def print_in_green(result):
     print(f"\033[92m {result}\033[00m")
 
 def print_in_blue(result):
-    print(f"\033[34m {result}\033[00m")
+    print(f"\033[34m{result}\033[00m")
 
 def print_in_grey(result):
-    print(f"\033[90m {result}\033[00m")
+    print(f"\033[90m{result}\033[00m")
 
 def print_in_light_green(result):
     print(f"\033[92m{result}\033[92m")
