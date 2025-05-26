@@ -134,4 +134,6 @@ while True:
             win_rate = 0
             lose_rate = 0
             draw_rate = 0
+        print()
         display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+        break
