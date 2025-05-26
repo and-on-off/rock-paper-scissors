@@ -24,25 +24,22 @@ def valid_input_checker():
             return False
         print("Invalid input. Try again...")
 
-def print_in_red(result):
-    print(f"\033[91m{result}\033[00m")
-
-def print_in_green(result):
-    print(f"\033[92m{result}\033[00m")
-
-def print_in_blue(result):
-    print(f"\033[34m{result}\033[00m")
-
-def print_in_grey(result):
-    print(f"\033[90m{result}\033[00m")
-
-def print_in_light_green(result):
-    print(f"\033[92m{result}\033[92m")
+def print_in_color(result, color):
+    if color == "red":
+        print(f"\033[91m{result}\033[00m")
+    elif color == "green":
+        print(f"\033[92m{result}\033[00m")
+    elif color == "blue":
+        print(f"\033[34m{result}\033[00m")
+    elif color == "grey":
+        print(f"\033[90m{result}\033[00m")
+    elif color == "light green":
+        print(f"\033[92m{result}\033[92m")
 
 def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
     print(f"Thank you for playing, you scored: \n"
           f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
-    print_in_light_green(f"Your highest win streak was {max_win_streak}.")
+    print_in_color(f"Your highest win streak was {max_win_streak}.", "light green")
 
 def restart_the_game():
     while True:
@@ -73,8 +70,8 @@ def computer_choice():
 
     return choice
 
-print_in_blue("Welcome to Rock-Paper-Scissors game! \n"
-              "You can quit the game anytime by typing [q].")
+print_in_color("Welcome to Rock-Paper-Scissors game! \n"
+              "You can quit the game anytime by typing [q].", "blue")
 
 while True:
 
@@ -103,7 +100,7 @@ while True:
         elif player_move == "s":
             player_move = SCISSORS
 
-        print_in_blue(f"The computer chose {computer_move}.")
+        print_in_color(f"The computer chose {computer_move}.", "blue")
 
         if (player_move == ROCK and computer_move == SCISSORS) or \
                 (player_move == PAPER and computer_move == ROCK) or \
@@ -112,13 +109,13 @@ while True:
             win_streak += 1
             if win_streak >= max_win_streak:
                 max_win_streak = win_streak
-            print_in_green("You win!")
+            print_in_color("You win!", "green")
         elif player_move == computer_move:
             score_draw += 1
             win_streak = 0
-            print_in_grey("Draw!")
+            print_in_color("Draw!", "grey")
         else:
-            print_in_red("You lose!")
+            print_in_color("You lose!", "red")
             score_lose += 1
             win_streak = 0
 
