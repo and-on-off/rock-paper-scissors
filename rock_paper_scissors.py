@@ -20,6 +20,8 @@ def valid_input_checker():
             return player_input
         elif player_input == "s":
             return player_input
+        elif player_input == "q":
+            return False
         print("Invalid input. Try again...")
 
 def print_in_red(result):
@@ -51,7 +53,7 @@ def restart_the_game():
 
         if player_response == "yes":
             return True
-        elif player_response == "no":
+        elif player_response == "no" or player_response == "q":
             print()
             display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
             return False
@@ -71,11 +73,25 @@ def computer_choice():
 
     return choice
 
-print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
+print_in_blue("Welcome to Rock-Paper-Scissors game! \n"
+              "You can quit the game anytime by typing [q].")
 
 while True:
 
     player_move = valid_input_checker()
+
+    if not player_move:
+        if games_played > 0:
+            win_rate = score_win / games_played * 100
+            lose_rate = score_lose / games_played * 100
+            draw_rate = score_draw / games_played * 100
+        else:
+            win_rate = 0
+            lose_rate = 0
+            draw_rate = 0
+        display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+        break
+
     computer_move = computer_choice()
     games_played += 1
 
