@@ -1,5 +1,6 @@
 import random
 
+games_played = 0
 score_win = 0
 score_lose = 0
 score_draw = 0
@@ -25,9 +26,12 @@ def restart_the_game():
         if player_response == "yes":
             return True
         elif player_response == "no":
+            win_rate = score_win / games_played * 100
+            lose_rate = score_lose / games_played * 100
+            draw_rate = score_draw / games_played * 100
             print()
             print(f"Thank you for playing, you scored: \n"
-                f"Wins: {score_win} | Loses: {score_lose} | Draws: {score_draw}")
+                f"Wins: {score_win} - {win_rate:.0f}% | Loses: {score_lose} - {lose_rate:.0f}% | Draws: {score_draw} - {draw_rate:.0f}%")
             return False
         else:
             print("Invalid input. Please enter [yes] or [no]")
@@ -63,6 +67,7 @@ while True:
 
     player_move = valid_input_checker()
     computer_move = computer_choice()
+    games_played += 1
 
     if player_move == "r":
         player_move = ROCK
