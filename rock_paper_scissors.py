@@ -20,6 +20,10 @@ def valid_input_checker():
             return player_input
         print("Invalid input. Try again...")
 
+def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
+    print(f"Thank you for playing, you scored: \n"
+          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
+
 def restart_the_game():
     while True:
         player_response = input("Type [yes] to play again or [no] to quit: ")
@@ -30,8 +34,7 @@ def restart_the_game():
             lose_rate = score_lose / games_played * 100
             draw_rate = score_draw / games_played * 100
             print()
-            print(f"Thank you for playing, you scored: \n"
-                f"Wins: {score_win} - {win_rate:.0f}% | Loses: {score_lose} - {lose_rate:.0f}% | Draws: {score_draw} - {draw_rate:.0f}%")
+            display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
             return False
         else:
             print("Invalid input. Please enter [yes] or [no]")
