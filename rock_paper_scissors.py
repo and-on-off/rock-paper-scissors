@@ -22,6 +22,19 @@ def valid_input_checker():
             pass
         print("Invalid input. Try again...")
 
+def computer_choice():
+    random_number = random.randint(1,3)
+    choice = ""
+
+    if random_number == 1:
+        choice = ROCK
+    elif random_number == 2:
+        choice = PAPER
+    elif random_number == 3:
+        choice = SCISSORS
+
+    return choice
+
 def print_in_red(result):
     print(f"\033[91m {result}\033[00m")
 
@@ -39,6 +52,7 @@ print_in_blue("Welcome to Rock-Paper-Scissors game! \n")
 while True:
 
     player_move = valid_input_checker()
+    computer_move = computer_choice()
 
     if player_move == "r":
         player_move = ROCK
@@ -48,16 +62,6 @@ while True:
         player_move = SCISSORS
     else:
         raise SystemExit("Invalid Input. Try again...")
-
-    computer_random_number = random.randint(1, 3)
-    computer_move = ""
-
-    if computer_random_number == 1:
-        computer_move = ROCK
-    elif computer_random_number == 2:
-        computer_move = PAPER
-    elif computer_random_number == 3:
-        computer_move = SCISSORS
 
     print_in_blue(f"The computer chose {computer_move}.")
 
