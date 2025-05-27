@@ -1,5 +1,9 @@
 import random
 
+ROCK = "Rock"
+PAPER = "Paper"
+SCISSORS = "Scissors"
+
 games_played = 0
 score_win = 0
 score_lose = 0
@@ -7,9 +11,6 @@ score_draw = 0
 win_streak = 0
 max_win_streak = 0
 
-ROCK = "Rock"
-PAPER = "Paper"
-SCISSORS = "Scissors"
 
 def valid_input_checker():
     while True:
@@ -23,6 +24,19 @@ def valid_input_checker():
         elif player_input == "q":
             return False
         print("Invalid input. Try again...")
+
+def computer_choice():
+    random_number = random.randint(1,3)
+    choice = ""
+
+    if random_number == 1:
+        choice = ROCK
+    elif random_number == 2:
+        choice = PAPER
+    elif random_number == 3:
+        choice = SCISSORS
+
+    return choice
 
 def print_in_color(result, color):
     if color == "red":
@@ -63,19 +77,6 @@ def restart_the_game():
             return False
         else:
             print("Invalid input. Please enter [yes] or [no]")
-
-def computer_choice():
-    random_number = random.randint(1,3)
-    choice = ""
-
-    if random_number == 1:
-        choice = ROCK
-    elif random_number == 2:
-        choice = PAPER
-    elif random_number == 3:
-        choice = SCISSORS
-
-    return choice
 
 print_in_color("Welcome to Rock-Paper-Scissors game! \n"
               "You can quit the game anytime by typing [q].", "blue")
