@@ -36,23 +36,30 @@ def print_in_color(result, color):
     elif color == "light green":
         print(f"\033[92m{result}\033[92m")
 
-def display_results(wins, win_rate, loses, lose_rate, draws, draw_rate):
+def calculate_and_display_results():
+    if games_played > 0:
+        win_rate = score_win / games_played * 100
+        lose_rate = score_lose / games_played * 100
+        draw_rate = score_draw / games_played * 100
+    else:
+        win_rate = 0
+        lose_rate = 0
+        draw_rate = 0
+
+    print()
     print(f"Thank you for playing, you scored: \n"
-          f"Wins: {wins} - {win_rate:.0f}% | Loses: {loses} - {lose_rate:.0f}% | Draws: {draws} - {draw_rate:.0f}%")
+          f"Wins: {score_win} - {win_rate:.0f}% | Loses: {score_lose} - {lose_rate:.0f}% | Draws: {score_draw} - {draw_rate:.0f}%")
     print_in_color(f"Your highest win streak was {max_win_streak}.", "light green")
 
 def restart_the_game():
     while True:
         player_response = input("Type [yes] to play again or [no] to quit: ")
-        win_rate = score_win / games_played * 100
-        lose_rate = score_lose / games_played * 100
-        draw_rate = score_draw / games_played * 100
 
         if player_response == "yes":
             return True
         elif player_response == "no" or player_response == "q":
             print()
-            display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+            calculate_and_display_results()
             return False
         else:
             print("Invalid input. Please enter [yes] or [no]")
@@ -79,15 +86,7 @@ while True:
         player_move = valid_input_checker()
 
         if not player_move:
-            if games_played > 0:
-                win_rate = score_win / games_played * 100
-                lose_rate = score_lose / games_played * 100
-                draw_rate = score_draw / games_played * 100
-            else:
-                win_rate = 0
-                lose_rate = 0
-                draw_rate = 0
-            display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+            calculate_and_display_results()
             break
 
         computer_move = computer_choice()
@@ -123,14 +122,5 @@ while True:
         if not restart_the_game():
             break
     except KeyboardInterrupt:
-        if games_played > 0:
-            win_rate = score_win / games_played * 100
-            lose_rate = score_lose / games_played * 100
-            draw_rate = score_draw / games_played * 100
-        else:
-            win_rate = 0
-            lose_rate = 0
-            draw_rate = 0
-        print()
-        display_results(score_win, win_rate, score_lose, lose_rate, score_draw, draw_rate)
+        calculate_and_display_results()
         break
